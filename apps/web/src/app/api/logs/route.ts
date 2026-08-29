@@ -14,18 +14,35 @@ const ingestSchema = z.object({
   timestamp: z.string().optional(),
 });
 
+// The SDK sends logs from arbitrary origins (any app that installs it, browser or
+// server), authenticated by the token in the body rather than cookies, so this
+// ingestion endpoint intentionally allows cross-origin requests from anywhere.
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
+function corsJson(body: unknown, init?: ResponseInit) {
+  return NextResponse.json(body, { ...init, headers: { ...CORS_HEADERS, ...init?.headers } });
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
+}
+
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
   const parsed = ingestSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Invalid payload" }, { status: 400 });
+    return corsJson({ error: parsed.error.issues[0]?.message ?? "Invalid payload" }, { status: 400 });
   }
 
   await connectToDatabase();
 
   const token = await TokenModel.findOne({ token: parsed.data.token }).lean();
   if (!token) {
-    return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    return corsJson({ error: "Invalid token" }, { status: 401 });
   }
 
   const log = await LogModel.create({
@@ -37,7 +54,7 @@ export async function POST(request: Request) {
     meta: parsed.data.meta,
   });
 
-  return NextResponse.json({ id: log._id.toString() }, { status: 201 });
+  return corsJson({ id: log._id.toString() }, { status: 201 });
 }
 
 const MAX_PAGE_SIZE = 100;
