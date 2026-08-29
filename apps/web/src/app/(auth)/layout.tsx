@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LogoMark } from "@/components/logo-mark";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,9 +11,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       />
       <ThemeToggle className="absolute top-4 right-4" />
       <Link href="/" className="mb-8 flex items-center gap-2 text-lg font-semibold tracking-tight">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-          lb
-        </span>
+        <LogoMark className="h-8 w-8" />
         logbyte
       </Link>
       <div className="w-full max-w-sm">{children}</div>

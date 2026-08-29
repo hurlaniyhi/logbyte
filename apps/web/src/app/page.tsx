@@ -51,7 +51,7 @@ export default function Home() {
           />
           <div className="mx-auto max-w-5xl px-6 py-24 text-center">
             <h1 className="mx-auto max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
-              Structured logging for your Node apps, without the setup.
+              Structured logging for any JavaScript app, without the setup.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
               Install the SDK, pass a token, and watch your <code className="font-mono text-foreground">.info</code>,{" "}
@@ -79,24 +79,34 @@ export default function Home() {
             <div>
               <h2 className="text-2xl font-semibold tracking-tight">Three steps, and you&apos;re logging.</h2>
               <ol className="mt-6 space-y-4 text-sm text-muted-foreground">
-                <li className="flex gap-3">
+                <li className="flex items-start gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">
                     1
                   </span>
-                  Sign up and generate a token for an environment, e.g. <span className="font-medium text-foreground">&nbsp;staging</span>.
+                  <span>
+                    Sign up and generate a token for an environment, e.g.{" "}
+                    <span className="font-medium text-foreground">staging</span>.
+                  </span>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex items-start gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">
                     2
                   </span>
-                  Install <code className="font-mono text-foreground">@rhydhur/logbyte</code> in your app and initialize it with that token.
+                  <span>
+                    Install <code className="font-mono text-foreground">@rhydhur/logbyte</code> in your app and
+                    initialize it with that token.
+                  </span>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex items-start gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">
                     3
                   </span>
-                  Call <code className="font-mono text-foreground">.info()</code>, <code className="font-mono text-foreground">.warning()</code>, or{" "}
-                  <code className="font-mono text-foreground">.error()</code> anywhere, and watch it land on your dashboard.
+                  <span>
+                    Call <code className="font-mono text-foreground">.info()</code>,{" "}
+                    <code className="font-mono text-foreground">.warning()</code>, or{" "}
+                    <code className="font-mono text-foreground">.error()</code> anywhere, and watch it land on your
+                    dashboard.
+                  </span>
                 </li>
               </ol>
             </div>

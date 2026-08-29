@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "logbyte — logging made simple",
-  description: "Ship structured logs from any Node.js app and watch them arrive in real time.",
+  description: "Ship structured logs from any JavaScript app — Node.js, React, Vue, and more — and watch them arrive in real time.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
