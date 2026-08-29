@@ -1,4 +1,4 @@
-import type { LogbyteOptions, LogLevel, LogPayload } from "./types.js";
+import type { LogbyteOptions, LogLevel, LogMeta, LogPayload } from "./types.js";
 
 export const DEFAULT_BASE_URL = "https://logbyte-vault.vercel.app";
 
@@ -21,24 +21,24 @@ export class Logbyte {
       });
   }
 
-  info(key: string, message: string, meta?: Record<string, unknown>): void {
+  info(key: string, message: string, meta?: LogMeta): void {
     this.send("info", key, message, meta);
   }
 
-  warning(key: string, message: string, meta?: Record<string, unknown>): void {
+  warning(key: string, message: string, meta?: LogMeta): void {
     this.send("warning", key, message, meta);
   }
 
-  error(key: string, message: string, meta?: Record<string, unknown>): void {
+  error(key: string, message: string, meta?: LogMeta): void {
     this.send("error", key, message, meta);
   }
 
   /** Alias for `.info()`. */
-  log(key: string, message: string, meta?: Record<string, unknown>): void {
+  log(key: string, message: string, meta?: LogMeta): void {
     this.info(key, message, meta);
   }
 
-  private send(level: LogLevel, key: string, message: string, meta?: Record<string, unknown>): void {
+  private send(level: LogLevel, key: string, message: string, meta?: LogMeta): void {
     if (!key) {
       this.onError(new Error("Logbyte: `key` is required for every log call."));
       return;

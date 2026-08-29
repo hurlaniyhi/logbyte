@@ -54,7 +54,7 @@ const logger = new Logbyte({
 - `.error(key, message, meta?)`
 - `.log(key, message, meta?)` — alias for `.info()`
 
-`meta` is any JSON-serializable object and is shown expanded in the dashboard.
+`meta` accepts any JSON-serializable value — an object, an array, a stringified JSON blob, or a primitive (string/number/boolean) — and is shown expanded in the dashboard.
 
 ## Using it in the browser (React, Vue, etc.)
 

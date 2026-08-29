@@ -1,5 +1,8 @@
 export type LogLevel = "info" | "warning" | "error";
 
+/** Any JSON-serializable value: an object, an array, a stringified JSON blob, or a primitive. */
+export type LogMeta = Record<string, unknown> | unknown[] | string | number | boolean | null;
+
 export interface LogbyteOptions {
   /** Token generated for a project/environment on the logbyte dashboard. */
   token: string;
@@ -14,6 +17,6 @@ export interface LogPayload {
   key: string;
   level: LogLevel;
   message: string;
-  meta?: Record<string, unknown>;
+  meta?: LogMeta;
   timestamp: string;
 }

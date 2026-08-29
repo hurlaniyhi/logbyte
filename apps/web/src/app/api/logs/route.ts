@@ -5,12 +5,22 @@ import { TokenModel } from "@/models/Token";
 import { LogModel, LOG_LEVELS } from "@/models/Log";
 import { getOptionalSession } from "@/lib/dal";
 
+// Any JSON-serializable value: an object, an array, a stringified JSON blob, or a primitive.
+const metaSchema = z.union([
+  z.record(z.string(), z.unknown()),
+  z.array(z.unknown()),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.null(),
+]);
+
 const ingestSchema = z.object({
   token: z.string().min(1),
   key: z.string().min(1),
   level: z.enum(LOG_LEVELS),
   message: z.string().min(1),
-  meta: z.record(z.string(), z.unknown()).optional(),
+  meta: metaSchema.optional(),
   timestamp: z.string().optional(),
 });
 

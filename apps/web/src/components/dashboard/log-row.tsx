@@ -6,18 +6,23 @@ import { cn } from "@/lib/utils";
 import { LevelBadge } from "@/components/dashboard/level-badge";
 import type { LogLevel } from "@/models/Log";
 
+export type LogMeta = Record<string, unknown> | unknown[] | string | number | boolean | null;
+
 export interface LogEntry {
   id: string;
   key: string;
   level: LogLevel;
   message: string;
-  meta: Record<string, unknown> | null;
+  meta: LogMeta;
   createdAt: string;
 }
 
 export function LogRow({ log }: { log: LogEntry }) {
   const [expanded, setExpanded] = useState(false);
-  const hasMeta = log.meta && Object.keys(log.meta).length > 0;
+  const hasMeta =
+    log.meta !== null &&
+    log.meta !== undefined &&
+    (typeof log.meta !== "object" || Object.keys(log.meta).length > 0);
   const isError = log.level === "error";
 
   return (

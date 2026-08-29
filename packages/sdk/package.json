@@ -1,6 +1,6 @@
 {
   "name": "@rhydhur/logbyte",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Tiny structured logging client for logbyte — send info/warning/error logs from any JavaScript app (Node.js backends or frontend frameworks like React and Vue) to your logbyte dashboard.",
   "keywords": ["logging", "logger", "logbyte", "observability", "react", "vue", "javascript"],
   "license": "MIT",

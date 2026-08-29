@@ -91,4 +91,20 @@ describe("Logbyte", () => {
     expect(onError).toHaveBeenCalledTimes(1);
     expect(global.fetch).not.toHaveBeenCalled();
   });
+
+  it.each([
+    ["array", [1, 2, 3]],
+    ["stringified JSON", JSON.stringify({ a: 1 })],
+    ["plain string", "just a string"],
+    ["number", 42],
+    ["boolean", true],
+  ] as const)("accepts %s meta", async (_label, meta) => {
+    const logger = new Logbyte({ token: "t", baseUrl: "http://localhost:3000" });
+    logger.info("k", "m", meta);
+
+    await vi.waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+    const [, init] = (global.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    const body = JSON.parse(init.body as string);
+    expect(body.meta).toEqual(meta);
+  });
 });
