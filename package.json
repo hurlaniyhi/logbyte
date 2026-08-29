@@ -1,0 +1,14 @@
+{
+  "name": "logbyte-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "apps/web",
+    "packages/sdk"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w apps/web",
+    "build": "npm run build -w packages/sdk && npm run build -w apps/web",
+    "test": "npm run test -w packages/sdk"
+  }
+}
