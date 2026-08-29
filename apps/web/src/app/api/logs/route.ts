@@ -101,9 +101,12 @@ export async function GET(request: Request) {
     query.level = { $in: levels };
   }
   if (search) {
+    const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     query.$or = [
-      { key: { $regex: search, $options: "i" } },
-      { message: { $regex: search, $options: "i" } },
+      // `key` is a discrete identifier (e.g. a service name), so match it exactly
+      // rather than by substring — otherwise "test-12" would also match "test-123".
+      { key: { $regex: `^${escaped}$`, $options: "i" } },
+      { message: { $regex: escaped, $options: "i" } },
     ];
   }
 
