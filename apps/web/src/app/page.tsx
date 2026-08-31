@@ -70,7 +70,7 @@ export default function Home() {
           </div>
 
           <div className="mx-auto max-w-2xl px-6 pb-20">
-            <CodeBlock code="npm install @logbyte/logger" filename="terminal" />
+            <CodeBlock code="npm install @logbyte/logger" filename="terminal" lang="bash" />
           </div>
         </section>
 
@@ -110,7 +110,7 @@ export default function Home() {
                 </li>
               </ol>
             </div>
-            <CodeBlock code={usageSnippet} filename="server.ts" />
+            <CodeBlock code={usageSnippet} filename="server.ts" lang="typescript" />
           </div>
         </section>
 
