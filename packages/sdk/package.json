@@ -1,9 +1,18 @@
 {
-  "name": "@rhydhur/logbyte",
-  "version": "0.1.2",
+  "name": "@logbyte/logger",
+  "version": "0.1.1",
   "description": "Tiny structured logging client for logbyte — send info/warning/error logs from any JavaScript app (Node.js backends or frontend frameworks like React and Vue) to your logbyte dashboard.",
   "keywords": ["logging", "logger", "logbyte", "observability", "react", "vue", "javascript"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hurlaniyhi/logbyte.git",
+    "directory": "packages/sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/hurlaniyhi/logbyte/issues"
+  },
+  "homepage": "https://github.com/hurlaniyhi/logbyte#readme",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

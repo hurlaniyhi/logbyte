@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { CodeBlock } from "@/components/marketing/code-block";
 
-const usageSnippet = `import { Logbyte } from "@rhydhur/logbyte";
+const usageSnippet = `import { Logbyte } from "@logbyte/logger";
 
 const logger = new Logbyte({ token: "lb_your_generated_token" });
 
@@ -19,7 +19,7 @@ const features = [
   {
     icon: Zap,
     title: "One line to install",
-    description: "npm install @rhydhur/logbyte, pass your token, and start logging. No agents, no config files.",
+    description: "npm install @logbyte/logger, pass your token, and start logging. No agents, no config files.",
   },
   {
     icon: Layers,
@@ -70,7 +70,7 @@ export default function Home() {
           </div>
 
           <div className="mx-auto max-w-2xl px-6 pb-20">
-            <CodeBlock code="npm install @rhydhur/logbyte" filename="terminal" />
+            <CodeBlock code="npm install @logbyte/logger" filename="terminal" />
           </div>
         </section>
 
@@ -93,7 +93,7 @@ export default function Home() {
                     2
                   </span>
                   <span>
-                    Install <code className="font-mono text-foreground">@rhydhur/logbyte</code> in your app and
+                    Install <code className="font-mono text-foreground">@logbyte/logger</code> in your app and
                     initialize it with that token.
                   </span>
                 </li>

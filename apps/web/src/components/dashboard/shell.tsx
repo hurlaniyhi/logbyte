@@ -12,8 +12,8 @@ import { LogoMark } from "@/components/logo-mark";
 export function DashboardShell({ email, children }: { email: string; children: React.ReactNode }) {
   return (
     <TokenProvider>
-      <div className="flex min-h-screen bg-background">
-        <aside className="hidden w-60 shrink-0 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground md:flex">
+      <div className="flex h-screen overflow-hidden bg-background">
+        <aside className="hidden w-60 shrink-0 flex-col overflow-y-auto border-r border-sidebar-border bg-sidebar text-sidebar-foreground md:flex">
           <Link href="/dashboard/logs" className="flex items-center gap-2 px-5 py-5 text-base font-semibold tracking-tight">
             <LogoMark className="h-7 w-7" />
             logbyte
@@ -34,7 +34,7 @@ export function DashboardShell({ email, children }: { email: string; children: R
             </form>
           </div>
         </aside>
-        <div className="flex min-w-0 flex-1 flex-col">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col">
           <header className="flex items-center justify-between border-b border-border px-4 py-3 md:hidden">
             <Link href="/dashboard/logs" className="flex items-center gap-2 text-base font-semibold tracking-tight">
               <LogoMark className="h-7 w-7" />

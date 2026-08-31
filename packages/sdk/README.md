@@ -5,7 +5,7 @@ Tiny structured logging client for [logbyte](https://github.com/) — send `info
 ## Install
 
 ```bash
-npm install @rhydhur/logbyte
+npm install @logbyte/logger
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ npm install @rhydhur/logbyte
 2. Initialize the client with that token.
 
 ```ts
-import { Logbyte } from "@rhydhur/logbyte";
+import { Logbyte } from "@logbyte/logger";
 
 const logger = new Logbyte({ token: "lb_your_generated_token" });
 
